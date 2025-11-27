@@ -1,4 +1,4 @@
-use std::process::Output;
+mod intermediate;
 
 fn main() {
     println!("Hello, world!");
