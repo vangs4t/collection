@@ -1,5 +1,7 @@
 mod intermediate;
 mod exception;
+mod lifetime;
+mod smart;
 
 fn main() {
     println!("Hello, world!");

@@ -41,6 +41,11 @@ fn emails(host :Option<String>) -> Result<String, String> {
     }
 }
 
+// fn user_verification(host :Option<String>) -> Result<String,String>{
+//     database_connection(host)?;
+
+// }
+
 #[test]
 fn connected() {
     let host = None;
@@ -48,3 +53,5 @@ fn connected() {
     println!("{:?}", database_connection(host));
     println!("{:?}", emails(email));
 }
+
+
