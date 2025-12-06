@@ -1,3 +1,5 @@
+use std::fmt::Error;
+
 
 fn hitung_pajak(gaji: Vec<u32>) -> Result<Vec<u32>, String>{
     match gaji.len() {
@@ -18,6 +20,22 @@ fn parse_angka(data: Vec<&str>) -> Result<Vec<i32>, String>{
     Ok(hasil)
 }
 
+fn largest_five_digit_number(num: &str) -> u32 {
+    (0..num.len() - 4) // Iterasi dari indeks 0 sampai indeks di mana masih ada 4 digit setelahnya
+        .filter_map(|i| {
+            // Ambil substring 5 digit mulai dari indeks 'i'
+            // dan coba parse menjadi u32
+            num[i..i + 5].parse::<u32>().ok()
+        })
+        .max() // Temukan nilai maksimum dari semua angka yang berhasil di-parse
+        .unwrap_or(0) // Jika string kosong atau gagal parse (tidak mungkin di soal ini), kembalikan 0
+}
+
+#[test]
+    fn test_basic() {
+        assert_eq!(largest_five_digit_number(&"7316799890"), 99890);
+        assert_eq!(largest_five_digit_number(&"731674765"), 74765);
+    }
 
 #[test]
 fn gitung() {
@@ -46,12 +64,12 @@ fn emails(host :Option<String>) -> Result<String, String> {
 
 // }
 
-#[test]
-fn connected() {
-    let host = None;
-    let email = None;
-    println!("{:?}", database_connection(host));
-    println!("{:?}", emails(email));
-}
+// #[test]
+// fn connected() {
+//     let host = None;
+//     let email = None;
+//     println!("{:?}", database_connection(host));
+//     println!("{:?}", emails(email));
+// }
 
 
